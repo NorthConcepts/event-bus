@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.northconcepts.eventbus</groupId>
-  <artifactId>NorthConcepts-EventBus</artifactId>
+  <groupId>com.northconcepts</groupId>
+  <artifactId>eventbus</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0-SNAPSHOT</version>
   <name>North Concepts - Event Bus</name>
@@ -32,6 +32,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -49,6 +50,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -72,9 +74,7 @@
         <version>1.0-alpha-6</version>
       </extension>
     </extensions>
-
   </build>
-
 
   <distributionManagement>
     <repository>
@@ -82,5 +82,4 @@
       <url>file://${basedir}/local-repo/</url>
     </repository>
   </distributionManagement>
-
 </project>
