@@ -29,6 +29,9 @@ public class AndFilter implements EventFilter {
 
 	@Override
 	public boolean allow(Event<?> event, Object listener) {
+		if (filter == null || filter.length == 0) {
+			return true;
+		}
 		for (EventFilter c : filter) {
 			if (!c.allow(event, listener)) {
 				return false;

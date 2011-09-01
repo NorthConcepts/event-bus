@@ -17,29 +17,18 @@ limitations under the License.
 */
 package com.northconcepts.eventbus.filter;
 
-import com.northconcepts.eventbus.Event;
 import com.northconcepts.eventbus.EventFilter;
+import org.junit.Test;
 
-public class EventSourceFilter implements EventFilter {
+import static org.junit.Assert.assertTrue;
+
+
+public class NullFilterTest extends LogicalFilterTest {
+
+	@Test
+	public void testAllow() {
+		EventFilter filter = new NullFilter();
+		assertTrue(filter.allow(event, listener));
+	}
 	
-	private final Object[] source;
-
-	public EventSourceFilter(Object ... source) {
-		this.source = source;
-	}
-
-	@Override
-	public boolean allow(Event<?> event, Object listener) {
-		if (source == null || source.length == 0) {
-			return true;
-		}
-		Object s = event.getEventSource();
-		for (Object s2 : source) {
-			if (s == s2 || (s != null && s.equals(s2))) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 }

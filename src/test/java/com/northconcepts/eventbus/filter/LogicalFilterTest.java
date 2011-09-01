@@ -20,26 +20,23 @@ package com.northconcepts.eventbus.filter;
 import com.northconcepts.eventbus.Event;
 import com.northconcepts.eventbus.EventFilter;
 
-public class EventSourceFilter implements EventFilter {
-	
-	private final Object[] source;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-	public EventSourceFilter(Object ... source) {
-		this.source = source;
-	}
+public abstract class LogicalFilterTest {
 
-	@Override
-	public boolean allow(Event<?> event, Object listener) {
-		if (source == null || source.length == 0) {
-			return true;
-		}
-		Object s = event.getEventSource();
-		for (Object s2 : source) {
-			if (s == s2 || (s != null && s.equals(s2))) {
-				return true;
-			}
-		}
-		return false;
+	protected final EventFilter TRUE_FILTER = newMockFilter(true);
+	protected final EventFilter FALSE_FILTER = newMockFilter(false);
+
+	protected final Event<?> event = mock(Event.class);
+	protected final Object listener = mock(Object.class);
+
+	private static EventFilter newMockFilter(boolean result) {
+		EventFilter filter = mock(EventFilter.class);
+		when(filter.allow(any(Event.class), any())).thenReturn(result);
+
+		return filter;
 	}
 
 }
