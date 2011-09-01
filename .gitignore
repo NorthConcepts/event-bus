@@ -1,0 +1,12 @@
+# IntelliJ Files
+*.ipr
+*.iws
+*.iml
+
+# Eclipse Files
+.classpath
+.project
+
+# Build outputs
+/target
+/reports
